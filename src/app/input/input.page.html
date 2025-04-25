@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>RunPal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="dark">
+
+  <ion-item>
+    <ion-label position="floating">Time taken (minutes)</ion-label>
+    <ion-input type="number" [(ngModel)]="runTime" name="runTime" ngModel></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Distance (km)</ion-label>
+    <ion-input type="number" [(ngModel)]="distance" name="distance" ngModel>
+    </ion-input>
+  </ion-item>
+
+  
+
+  <ion-button expand="block" (click)="submitRun()">Submit</ion-button>
+
+  <div *ngIf="submitted">
+    <ion-text color="success">
+      <p>You ran {{ distance }} km in {{ runTime }} minutes.</p>
+    </ion-text>
+  </div>
+
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>RunPal</ion-title>
+    <ion-note slot="end">Benchmarks Information</ion-note>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="medium">
+
+  <!-- MEN'S TRAINING PACE -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><strong>Men's Training Pace</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="header-row ion-text-bold">
+          <ion-col>Distance (km)</ion-col>
+          <ion-col>Beginner</ion-col>
+          <ion-col>Intermediate</ion-col>
+          <ion-col>Advanced</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let row of mensPaceData">
+          <ion-col>{{ row.distance }}</ion-col>
+          <ion-col>{{ row.beginner }}</ion-col>
+          <ion-col>{{ row.intermediate }}</ion-col>
+          <ion-col>{{ row.advanced }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- WOMEN'S TRAINING PACE -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><strong>Women's Training Pace</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="header-row ion-text-bold">
+          <ion-col>Distance (km)</ion-col>
+          <ion-col>Beginner</ion-col>
+          <ion-col>Intermediate</ion-col>
+          <ion-col>Advanced</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let row of womensPaceData">
+          <ion-col>{{ row.distance }}</ion-col>
+          <ion-col>{{ row.beginner }}</ion-col>
+          <ion-col>{{ row.intermediate }}</ion-col>
+          <ion-col>{{ row.advanced }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
