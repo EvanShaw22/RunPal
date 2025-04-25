@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class InputPage implements OnInit {
 
+  //initialise variables
   public distance: number = 0;
   public runTime: number = 0;
   public submitted: boolean = false;
@@ -36,12 +37,14 @@ export class InputPage implements OnInit {
     //await needed to make wait
     await this.storage.create();
 
-    //logic needed here
+    //reads in data that is already stored - might not exist
     this.existingTimes = await this.storage.get(this.timeKey);
 
     if(Array.isArray(this.existingTimes)) {
+      //push new value to the array
       this.existingTimes.push(this.runTime);
 
+      //saves it to local storage
       await this.storage.set(this.timeKey, this.existingTimes);
 
     } else {
@@ -52,11 +55,10 @@ export class InputPage implements OnInit {
    
     }
 
-    //divide by 1000 to change from ms to seconds
+    //divide by 1000 to change from ms to seconds - time stamp needed to track times of runs
     var unixTimestamp = Math.floor(Date.now() / 1000);
 
-    console.log(unixTimestamp);
-
+    //reads in data that is already stored - might not exist
     this.timeStamps = await this.storage.get(this.timestampsKey);
     //this saves unix timestamps
     if(Array.isArray(this.timeStamps)) {
@@ -85,14 +87,13 @@ export class InputPage implements OnInit {
       await this.storage.set(this.distanceKey, [this.distance]);
     }
     
-    console.log(this.existingDistances);
-    console.log(this.existingTimes);
-
+    //displays an alert to say information has been submitted
     this.presentAlert();
-
+    
     this.router.navigate(['/home']);
   }
 
+  //called each time page is loaded
   async ionViewWillEnter() {
     await this.storage.create();
     //this.distance = await this.storage.get('distance');

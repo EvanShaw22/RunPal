@@ -17,25 +17,32 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class HomePage implements OnInit {
 
+  //below vars are used for the geolocation plugin
   coordinates: any = "";
   lat: string = "";
   long: String = "";
 
+  //used for weatherapi
   temp: string = "";
-
   weather:any = "";
+  windSpeed: any = "";
+
+  //local storage running values
   runTimes: any = [];
   distances: any = [];
-  windSpeed: any = "";
+  
   public timeStamps: any;
 
+  //openweather icon url is stored here
   icon: string = "";
 
+  //these are the keys used to acces local storage
   private timeKey: string = 'runTimingsRP3'; 
   private distanceKey: string = 'runDistancesRP3';
   private timestampsKey: string = 'runTimestampsRP3';
 
 
+  //converts timestamp to a date
   unixTimestampToDate(unixTimestamp : number) : string{
     //Convert to ms 
     var date = new Date(unixTimestamp * 1000);
@@ -44,6 +51,7 @@ export class HomePage implements OnInit {
 
   }
 
+  //reads in all the data from local storage
   async loadSavedRuns () {
     await this.storage.create();
 
@@ -51,13 +59,13 @@ export class HomePage implements OnInit {
     this.distances = await this.storage.get(this.distanceKey);
     this.timeStamps = await this.storage.get(this.timestampsKey);
   }
-  
+  //router
   goToInput() {
     this.router.navigate(['/input']);
   }
 
   ngOnInit() : void {
-    
+    //get gps and load saved runs on init
     this.getGPS();
     this.loadSavedRuns();
 

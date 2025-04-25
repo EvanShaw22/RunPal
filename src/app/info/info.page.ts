@@ -12,6 +12,7 @@ import { IonContent, IonButtons, IonBackButton, IonCardContent, IonGrid, IonRow,
 })
 export class InfoPage implements OnInit {
 
+  //placeholder info that is display in the html
   mensPaceData = [
     { distance: 4, beginner: '6:45', intermediate: '6:00', advanced: '5:15' },
     { distance: 5, beginner: '6:50', intermediate: '6:05', advanced: '5:20' },
